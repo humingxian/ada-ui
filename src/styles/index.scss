@@ -5,7 +5,10 @@
 @import "reboot";
 
 // mixin
-@import "mixin";
+@import "mixins";
 
 // button
-@import "../components/Button/style"
+@import "../components/Button/style";
+
+// alert
+@import "../components/Alert/style";

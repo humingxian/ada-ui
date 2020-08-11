@@ -1,4 +1,4 @@
-import React, { AnchorHTMLAttributes } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 
 export type ButtonSize = 'lg' | 'sm'
@@ -25,7 +25,7 @@ type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElemen
 // Partial 是一个类型 他接受一个范型 最后生成的类型其内部的所有属性都是可选的。
 // （相当于在每个类型的后面添加了联合类型undefined）
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
-const Button: React.FC<ButtonProps> = (props) => {
+export const Button: React.FC<ButtonProps> = (props) => {
   const {
     btnType,
     disabled,
