@@ -1,10 +1,23 @@
 import React from 'react'
 import Button from './components/Button/Button'
 import Alert from './components/Alert/Alert'
+import Menu from './components/Menu/Menu'
+import MenuItem from './components/Menu/MenuItem'
 
 function App () {
   return (
-    <main>
+    <main style={{ padding: '50px' }}>
+      <Menu mode='vertical'>
+        <MenuItem index='0'>123</MenuItem>
+        <MenuItem index='1' disabled>456</MenuItem>
+        <MenuItem index='2'>789</MenuItem>
+      </Menu>
+      <Menu>
+        <MenuItem index='0'>888</MenuItem>
+        <MenuItem index='1' disabled>999</MenuItem>
+        <MenuItem index='2'>000</MenuItem>
+      </Menu>
+      <hr/>
       <Button btnType='primary' autoFocus={true}>normal-primary</Button>
       <Button size='sm' onClick={e => { e.preventDefault(); alert(123) }}>small</Button>
       <Button btnType='danger' size='lg'>large-danger</Button>

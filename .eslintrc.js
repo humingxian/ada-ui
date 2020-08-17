@@ -1,11 +1,13 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true
+    es6: true,
+    jest: true
   },
   extends: [
     'plugin:react/recommended',
-    'standard'
+    'standard',
+    'plugin:@typescript-eslint/eslint-recommended'
   ],
   globals: {
     Atomics: 'readonly',

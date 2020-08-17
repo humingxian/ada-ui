@@ -1,6 +1,5 @@
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import classNames from 'classnames'
-import { spawn } from 'child_process'
 
 export type alertType = 'success' | 'default' | 'warning' | 'danger'
 
@@ -20,7 +19,7 @@ interface AlertProps {
   // 关闭方法
   onClose?: () => void
 }
-export const Alert: FC<AlertProps> = (props) => {
+export const Alert: React.FC<AlertProps> = (props) => {
   const [closed, setClosed] = useState<boolean>(false)
   const {
     title,
@@ -47,7 +46,7 @@ export const Alert: FC<AlertProps> = (props) => {
         !closed &&
         <div className={classes}>
           {
-            title && 
+            title &&
             <span className='alert-title'>
               {showIcon && <span className='alert-icon'>(图标)</span>}{title}
             </span>
