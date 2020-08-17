@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { menuContext } from './Menu'
 
 export interface IMenuItemProps {
-  index: string;
+  index?: string | number;
   className?: string;
   style?: React.CSSProperties,
   children?: React.ReactNode,
@@ -18,7 +18,7 @@ const MenuItem: React.FC<IMenuItemProps> = props => {
     'ada-menu-item-active': context.index === index
   })
   const handleClick = () => {
-    if (context.onSelect && !disabled) {
+    if (context.onSelect && !disabled && (index !== undefined && index !== null)) {
       context.onSelect(index)
     }
   }
@@ -28,5 +28,5 @@ const MenuItem: React.FC<IMenuItemProps> = props => {
     </li>
   )
 }
-
+MenuItem.displayName = 'MenuItem'
 export default MenuItem

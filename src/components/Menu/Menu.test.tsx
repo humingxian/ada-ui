@@ -5,22 +5,22 @@ import Menu, { IMenuProps } from './Menu'
 import MenuItem from './MenuItem'
 
 const testProps: IMenuProps = {
-  defaultIndex: '0',
+  defaultIndex: 0,
   onSelect: jest.fn(),
   className: 'test'
 }
 
 const testVerProps: IMenuProps = {
-  defaultIndex: '0',
+  defaultIndex: 0,
   mode: 'vertical'
 }
 
 const generateMenu = (props: IMenuProps) => {
   return (
     <Menu { ...props }>
-      <MenuItem index="0">active</MenuItem>
-      <MenuItem index="1" disabled>disabled</MenuItem>
-      <MenuItem index="2">xyz</MenuItem>
+      <MenuItem>active</MenuItem>
+      <MenuItem disabled index="hudada">disabled</MenuItem>
+      <MenuItem>xyz</MenuItem>
     </Menu>
   )
 }
@@ -45,11 +45,11 @@ describe('测试 Menu 和 MenuItem 组件', () => {
     fireEvent.click(thirdItem)
     expect(thirdItem).toHaveClass('ada-menu-item ada-menu-item-active')
     expect(activeElement).not.toHaveClass('ada-menu-item ada-menu-item-active')
-    // toHaveBeenCalledWith 是指 testProps.onSelect 这个函数被调用了，且调用参数是 "2"
-    expect(testProps.onSelect).toHaveBeenCalledWith('2')
+    // toHaveBeenCalledWith 是指 testProps.onSelect 这个函数被调用了，且调用参数是 2
+    expect(testProps.onSelect).toHaveBeenCalledWith(2)
     fireEvent.click(disabledElement)
     expect(disabledElement).not.toHaveClass('ada-menu-item ada-menu-item-active')
-    expect(testProps.onSelect).not.toHaveBeenCalledWith('1')
+    expect(testProps.onSelect).not.toHaveBeenCalledWith(1)
   })
   test('当设置mode为vertical时应该会渲染一个竖型的 Menu 组件', () => {
     // 每次执行 test 方法的时候，jest 会默认先执行 cleanup 方法

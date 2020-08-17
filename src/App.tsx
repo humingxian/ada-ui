@@ -3,19 +3,28 @@ import Button from './components/Button/Button'
 import Alert from './components/Alert/Alert'
 import Menu from './components/Menu/Menu'
 import MenuItem from './components/Menu/MenuItem'
+import SubMenu from './components/Menu/SubMenu'
 
 function App () {
   return (
     <main style={{ padding: '50px' }}>
       <Menu mode='vertical'>
-        <MenuItem index='0'>123</MenuItem>
-        <MenuItem index='1' disabled>456</MenuItem>
-        <MenuItem index='2'>789</MenuItem>
+        <MenuItem >123</MenuItem>
+        <MenuItem disabled index='hudada'>456</MenuItem>
+        <MenuItem >789</MenuItem>
+        <SubMenu title="test">
+          <MenuItem >hudada</MenuItem>
+          <MenuItem >lvlingling</MenuItem>
+        </SubMenu>
       </Menu>
-      <Menu>
-        <MenuItem index='0'>888</MenuItem>
-        <MenuItem index='1' disabled>999</MenuItem>
-        <MenuItem index='2'>000</MenuItem>
+      <Menu defaultIndex='2'>
+        <MenuItem >888</MenuItem>
+        <MenuItem disabled>999</MenuItem>
+        <MenuItem >000</MenuItem>
+        <SubMenu title="test">
+          <MenuItem >hudada</MenuItem>
+          <MenuItem >lvlingling</MenuItem>
+        </SubMenu>
       </Menu>
       <hr/>
       <Button btnType='primary' autoFocus={true}>normal-primary</Button>
