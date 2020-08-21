@@ -4,11 +4,20 @@ import Alert from './components/Alert/Alert'
 import Menu from './components/Menu/Menu'
 import MenuItem from './components/Menu/MenuItem'
 import SubMenu from './components/Menu/SubMenu'
+import Icon from './components/Icon/Icon'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 
 function App () {
   return (
     <main style={{ padding: '50px' }}>
-      <Menu mode='vertical'>
+      <FontAwesomeIcon icon='coffee' size='10x' />
+      <Icon icon='coffee' size='6x' theme='primary' />
+      <hr/>
+      <Menu mode='vertical' defaultOpenSubMenus={[]}>
         <MenuItem >123</MenuItem>
         <MenuItem disabled index='hudada'>456</MenuItem>
         <MenuItem >789</MenuItem>

@@ -39,18 +39,18 @@
       }
     }
   }
-  .is-vertical {
+  .ada-menu-vertical {
     .arrow-icon {
       transform: rotate(0deg) !important;
     }
   }
-  .is-vertical.is-opened {
+  .ada-menu-vertical.ada-submenu-opend {
     .arrow-icon {
       transform: rotate(180deg) !important;
     }
   }
   .ada-submenu {
-    // display: none;
+    display: none;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
@@ -59,13 +59,13 @@
       cursor: pointer;
       transition: $menu-transition;
       color: $body-color;
-      &.is-active, &:hover {
+      &.ada-menu-item-active, &:hover {
         color: $menu-item-active-color !important;
       }
     }
   }
-  .ada-submenu.menu-opened {
-    // display: block;
+  .ada-submenu.ada-submenu-opend {
+    display: block;
   }
 }
 .ada-menu-horizontal {

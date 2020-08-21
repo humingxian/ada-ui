@@ -19,7 +19,7 @@ interface AlertProps {
   // 关闭方法
   onClose?: () => void
 }
-export const Alert: React.FC<AlertProps> = (props) => {
+export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   const [closed, setClosed] = useState<boolean>(false)
   const {
     title,
@@ -37,7 +37,9 @@ export const Alert: React.FC<AlertProps> = (props) => {
 
   const handleClose = () => {
     setClosed(true)
-    onClose && onClose()
+    if (onClose) {
+      onClose()
+    }
   }
 
   return (
