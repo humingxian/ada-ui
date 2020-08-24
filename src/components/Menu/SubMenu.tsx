@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react'
 import classNames from 'classnames'
+import Icon from '../Icon/Icon'
 import { menuContext } from './Menu'
 import { IMenuItemProps } from './MenuItem'
+import Transition from '../Transition/Transition'
 
 export interface ISubMenuProps {
   index?: string;
@@ -14,16 +16,19 @@ const SubMenu: React.FC<ISubMenuProps> = ({ index, title, className, children }:
   const context = useContext(menuContext)
   const mode = context.mode
   const defaultOpenSubMenus = context.defaultOpenSubMenus as Array<string>
-  const classes = classNames('ada-menu-item ada-submenu-item', className, {
-    'ada-submenu-item-active': context.index === index
-  })
   const isOpen = index && mode === 'vertical' ? defaultOpenSubMenus.includes(index) : false
   const [menuOpen, setMenuOpen] = useState<boolean>(isOpen)
+  const classes = classNames('ada-menu-item ada-submenu-item', className, {
+    'ada-submenu-item-active': context.index === index,
+    'ada-submenu-item-opend': menuOpen,
+    'ada-submenu-item-vertical': context.mode === 'vertical'
+  })
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault()
     setMenuOpen(!menuOpen)
   }
+
   let timer: any
   const handleMouse = (e: React.MouseEvent, toggle: boolean) => {
     clearTimeout(timer)
@@ -57,15 +62,24 @@ const SubMenu: React.FC<ISubMenuProps> = ({ index, title, className, children }:
       }
     })
     return (
-      <ul className={subMenuClasses}>
-        {childrenComponent}
-      </ul>
+      <Transition
+        in={menuOpen}
+        timeout={1000}
+        animation='zoom-in-top'
+      >
+        <ul className={subMenuClasses}>
+          {childrenComponent}
+        </ul>
+      </Transition>
     )
   }
 
   return (
     <li key={index} className={classes} {...mouseEvent}>
-      <div className="ada-submenu-title" {...clickEvent}>{title}</div>
+      <div className="ada-submenu-title" {...clickEvent}>
+        {title}
+        <Icon icon='angle-down' className='arrow-icon' />
+      </div>
       {renderChildren()}
     </li>
   )

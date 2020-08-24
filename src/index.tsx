@@ -5,9 +5,11 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // 这里有问题，react StrictMode 模式 会导致 react-transition-group 的动画有问题
+  // 先主石雕，以后看到解决方法的时候再来处理
+  // <React.StrictMode>
+  <App />,
+  // </React.StrictMode>,
   document.getElementById('root')
 )
 

@@ -39,18 +39,18 @@
       }
     }
   }
-  .ada-menu-vertical {
+  .ada-submenu-item-vertical {
     .arrow-icon {
       transform: rotate(0deg) !important;
     }
   }
-  .ada-menu-vertical.ada-submenu-opend {
+  .ada-submenu-item-vertical.ada-submenu-item-opend {
     .arrow-icon {
       transform: rotate(180deg) !important;
     }
   }
   .ada-submenu {
-    display: none;
+    // display: none;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
@@ -65,7 +65,7 @@
     }
   }
   .ada-submenu.ada-submenu-opend {
-    display: block;
+    // display: block;
   }
 }
 .ada-menu-horizontal {
