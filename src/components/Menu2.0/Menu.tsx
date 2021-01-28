@@ -2,9 +2,9 @@ import React, { useState, createContext } from 'react'
 import classNames from 'classnames'
 import { IMenuItemProps } from './MenuItem'
 
-type TIndex = number | string;
-type TMenuMode = 'horizontal' | 'vertical';
-type TSelectCallback = (selectedIndex: TIndex) => void;
+export type TIndex = number | string;
+export type TMenuMode = 'horizontal' | 'vertical';
+export type TSelectCallback = (selectedIndex: TIndex) => void;
 
 export interface IMenuProps {
   defaultIndex?: TIndex;
@@ -12,17 +12,20 @@ export interface IMenuProps {
   mode?: TMenuMode;
   style?: React.CSSProperties;
   onSelect?: TSelectCallback;
-  children?: React.ReactNode
+  children?: React.ReactNode;
+  defaultOpenSubMenus?: TIndex[]
 }
 export interface IMenuContext {
   index: TIndex;
   onSelect?: TSelectCallback;
+  mode?: TMenuMode;
+  defaultOpenSubMenus?: TIndex[]
 }
 
 export const MenuContext = createContext<IMenuContext>({ index: 0 })
 
 const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
-  const { className, mode, style, children, defaultIndex, onSelect } = props
+  const { className, mode, style, children, defaultIndex, onSelect, defaultOpenSubMenus } = props
   const [currentActive, setCurrentActive] = useState(defaultIndex)
   const classes = classNames('ada-menu', className, {
     [`ada-menu-${mode}`]: mode
@@ -35,7 +38,9 @@ const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
   }
   const passedContext: IMenuContext = {
     index: currentActive || 0,
-    onSelect: handleClick
+    onSelect: handleClick,
+    mode,
+    defaultOpenSubMenus
   }
 
   const renderChildren = () => {
@@ -65,7 +70,8 @@ const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
 Menu.defaultProps = {
   defaultIndex: 0,
   mode: 'horizontal',
-  className: ''
+  className: '',
+  defaultOpenSubMenus: []
 }
 
 export default Menu

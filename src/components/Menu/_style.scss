@@ -50,7 +50,7 @@
     }
   }
   .ada-submenu {
-    // display: none;
+    display: none;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
@@ -64,8 +64,8 @@
       }
     }
   }
-  .ada-submenu.ada-submenu-opend {
-    // display: block;
+  .ada-submenu.ada-submenu-open {
+    display: block;
   }
 }
 .ada-menu-horizontal {

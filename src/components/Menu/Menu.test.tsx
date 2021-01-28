@@ -31,7 +31,7 @@ const generateMenu = (props: IMenuProps) => {
 const createStyle = () => {
   const styleContainer: string = `
     .ada-submenu { display: none; }
-    .ada-submenu.ada-submenu-opend {
+    .ada-submenu.ada-submenu-open {
       display: block;
     }
   `

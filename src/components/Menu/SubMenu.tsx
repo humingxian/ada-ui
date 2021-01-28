@@ -47,7 +47,7 @@ const SubMenu: React.FC<ISubMenuProps> = ({ index, title, className, children }:
   } : {}
   const renderChildren = () => {
     const subMenuClasses = classNames('ada-submenu', {
-      'ada-submenu-opend': menuOpen
+      'ada-submenu-open': menuOpen
     })
     const childrenComponent = React.Children.map(children, (child, i) => {
       const childElement = child as React.FunctionComponentElement<IMenuItemProps>

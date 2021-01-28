@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import Button from './components/Button/Button'
-import Alert from './components/Alert/Alert'
+import React, { /* useState */ } from 'react'
+// import Button from './components/Button/Button'
+// import Alert from './components/Alert/Alert'
 import Menu from './components/Menu2.0/Menu'
 import MenuItem from './components/Menu2.0/MenuItem'
 import SubMenu from './components/Menu2.0/SubMenu'
 import Icon from './components/Icon/Icon'
-import Transition from './components/Transition/Transition'
+// import Transition from './components/Transition/Transition'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,67 +13,38 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas)
 
 function App () {
-  const [show, setShow] = useState(false)
+  // const [show, setShow] = useState(false)
   return (
     <main style={{ padding: '50px' }}>
-      <Button size="lg" onClick={() => setShow(!show)}>troggle</Button>
-      <Transition in={show} timeout={300} animation="zoom-in-left">
-        <div>
-          <p>
-            123
-            <code>javascript</code>
-            456
-          </p>
-          <p>
-            123
-            <code>javascript</code>
-            456
-          </p>
-          <p>
-            123
-            <code>javascript</code>
-            456
-          </p>
-        </div>
-      </Transition>
-      <Transition in={show} timeout={300} wrapper animation="zoom-in-top">
-        <Button size="lg" btnType="primary">test Transintion</Button>
-      </Transition>
+      <FontAwesomeIcon icon='coffee' size='2x' />
+      <Icon icon='coffee' size='1x' theme='secondary' />
       <hr/>
-      <FontAwesomeIcon icon='coffee' size='10x' />
-      <Icon icon='coffee' size='6x' theme='secondary' />
-      <hr/>
-      <Menu mode='vertical'>
-        <MenuItem index={0}>123</MenuItem>
-        <MenuItem index={1} disabled>456</MenuItem>
-        <MenuItem index={2}>789</MenuItem>
-        <SubMenu title="test">
-          <MenuItem index={'3-0'}>hudada</MenuItem>
-          <MenuItem index={'3-1'}>lvlingling</MenuItem>
+      <Menu mode='vertical' onSelect={i => alert(i)} defaultOpenSubMenus={[3]}>
+        <MenuItem>123</MenuItem>
+        <MenuItem disabled>456</MenuItem>
+        <MenuItem>789</MenuItem>
+        <SubMenu title="test1">
+          <MenuItem>hudada</MenuItem>
+          <MenuItem>lvlingling</MenuItem>
+        </SubMenu>
+        <SubMenu title="test2">
+          <MenuItem>hudada</MenuItem>
+          <MenuItem>lvlingling</MenuItem>
+        </SubMenu>
+        <SubMenu title="test3">
+          <MenuItem>hudada</MenuItem>
+          <MenuItem>lvlingling</MenuItem>
         </SubMenu>
       </Menu>
-      <Menu defaultIndex={2}>
-        <MenuItem index={0}>888</MenuItem>
-        <MenuItem index={1} disabled>999</MenuItem>
-        <MenuItem index={2}>000</MenuItem>
+      <Menu defaultIndex={2} onSelect={i => alert(`${i}-hudada`)}>
+        <MenuItem>888</MenuItem>
+        <MenuItem disabled>999</MenuItem>
+        <MenuItem>000</MenuItem>
         <SubMenu title="test">
-          <MenuItem index={'3-0'}>hudada</MenuItem>
-          <MenuItem index={'3-1'}>lvlingling</MenuItem>
+          <MenuItem>hudada</MenuItem>
+          <MenuItem>lvlingling</MenuItem>
         </SubMenu>
       </Menu>
-      <hr/>
-      <Button btnType='primary' autoFocus={true}>normal-primary</Button>
-      <Button size='sm' onClick={e => { e.preventDefault(); alert(123) }}>small</Button>
-      <Button btnType='danger' size='lg'>large-danger</Button>
-      <Button disabled={ true }>disabled</Button>
-      <Button btnType='link' href='http://www.baidu.com' target='_blank'>link-baidu.com</Button>
-      <Button btnType='link' href='http://www.baidu.com' disabled={true}>link-baidu.com</Button>
-      <hr/>
-      <Alert message='正在开发 alert 组件' />
-      <Alert title='温馨提示' message='正在开发 alert 组件' type='success' />
-      <Alert title='温馨提示' message={(<img width='10px' height='10px' alt='6666' />)} type='warning' />
-      <Alert title='温馨提示' message='警告' type='danger' closeable={false} showIcon={false} />
-      <hr/>
     </main>
   )
 }

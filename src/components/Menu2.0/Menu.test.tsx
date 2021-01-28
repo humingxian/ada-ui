@@ -1,9 +1,10 @@
 import React from 'react'
-import { render, RenderResult, cleanup } from '@testing-library/react'
-import fireEvent from '@testing-library/user-event'
+import { render, RenderResult, cleanup, fireEvent, wait } from '@testing-library/react'
+// import fireEvent from '@testing-library/user-event'
 
 import Menu, { IMenuProps } from './Menu'
 import MenuItem from './MenuItem'
+import SubMenu from './SubMenu'
 
 const testProps: IMenuProps = {
   defaultIndex: 0,
@@ -28,8 +29,28 @@ const generateMenu = (props: IMenuProps) => {
       <MenuItem>
         xyz
       </MenuItem>
+      <SubMenu title='submenu'>
+        <MenuItem>
+          submenu-1
+        </MenuItem>
+      </SubMenu>
     </Menu>
   )
+}
+
+const createStyleFile = () => {
+  const cssFile: string = `
+    .ada-submenu {
+      display: none;
+    }
+    .ada-submenu.ada-submenu-open {
+      display: block;
+    }
+  `
+  const style = document.createElement('style')
+  style.type = 'text/css'
+  style.innerHTML = cssFile
+  return style
 }
 
 let wrapper: RenderResult,
@@ -40,12 +61,15 @@ let wrapper: RenderResult,
 describe('测试菜单和子菜单组件:', () => {
   beforeEach(() => {
     wrapper = render(generateMenu(testProps))
+    wrapper.container.append(createStyleFile())
     menuElement = wrapper.getByTestId('test-ada-menu')
     activeElement = wrapper.getByText('active')
     disabledElement = wrapper.getByText('disabled')
   })
   it('通过默认的props渲染出正确的菜单和子菜单', () => {
     expect(menuElement).toBeInTheDocument()
+    expect(menuElement).toHaveClass('ada-menu test')
+    expect(menuElement.querySelectorAll(':scope > li').length).toEqual(4)
     expect(activeElement).toHaveClass('ada-menu-item ada-menu-item-active')
     expect(disabledElement).toHaveClass('ada-menu-item ada-menu-item-disabled')
   })
@@ -63,5 +87,13 @@ describe('测试菜单和子菜单组件:', () => {
     const wrapper = render(generateMenu(testVerProps))
     const menuElement = wrapper.getByTestId('test-ada-menu')
     expect(menuElement).toHaveClass('ada-menu-vertical')
+  })
+  it('当鼠标划过子菜单时，下拉菜单显示', async () => {
+    expect(wrapper.queryByText('submenu-1')).not.toBeVisible()
+    const dropdownElement = wrapper.getByText('submenu')
+    fireEvent.mouseEnter(dropdownElement)
+    await wait(() => {
+      expect(wrapper.queryByText('submenu-1')).toBeVisible()
+    })
   })
 })
