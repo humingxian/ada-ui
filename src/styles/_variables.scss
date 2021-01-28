@@ -211,7 +211,6 @@ $btn-link-disabled-color:     $gray-600 !default;
 $btn-border-radius:           $border-radius !default;
 $btn-border-radius-lg:        $border-radius-lg !default;
 $btn-border-radius-sm:        $border-radius-sm !default;
-
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 // menu
@@ -224,7 +223,7 @@ $menu-transition:              color .15s ease-in-out, border-color .15s ease-in
 $menu-item-padding-y:          .5rem !default;
 $menu-item-padding-x:          1rem !default;
 $menu-item-active-color:       $primary !default;
-$menu-item-active-border-width: 2px !default;
+$menu-item-active-border-width:2px !default;
 $menu-item-disabled-color:     $gray-600 !default;
 
 //submenu

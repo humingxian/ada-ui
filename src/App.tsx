@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import Button from './components/Button/Button'
 import Alert from './components/Alert/Alert'
-import Menu from './components/Menu/Menu'
-import MenuItem from './components/Menu/MenuItem'
-import SubMenu from './components/Menu/SubMenu'
+import Menu from './components/Menu2.0/Menu'
+import MenuItem from './components/Menu2.0/MenuItem'
+import SubMenu from './components/Menu2.0/SubMenu'
 import Icon from './components/Icon/Icon'
 import Transition from './components/Transition/Transition'
 
@@ -43,22 +43,22 @@ function App () {
       <FontAwesomeIcon icon='coffee' size='10x' />
       <Icon icon='coffee' size='6x' theme='secondary' />
       <hr/>
-      <Menu mode='vertical' defaultOpenSubMenus={[]}>
-        <MenuItem >123</MenuItem>
-        <MenuItem disabled index='hudada'>456</MenuItem>
-        <MenuItem >789</MenuItem>
+      <Menu mode='vertical'>
+        <MenuItem index={0}>123</MenuItem>
+        <MenuItem index={1} disabled>456</MenuItem>
+        <MenuItem index={2}>789</MenuItem>
         <SubMenu title="test">
-          <MenuItem >hudada</MenuItem>
-          <MenuItem >lvlingling</MenuItem>
+          <MenuItem index={'3-0'}>hudada</MenuItem>
+          <MenuItem index={'3-1'}>lvlingling</MenuItem>
         </SubMenu>
       </Menu>
-      <Menu defaultIndex='2'>
-        <MenuItem >888</MenuItem>
-        <MenuItem disabled>999</MenuItem>
-        <MenuItem >000</MenuItem>
+      <Menu defaultIndex={2}>
+        <MenuItem index={0}>888</MenuItem>
+        <MenuItem index={1} disabled>999</MenuItem>
+        <MenuItem index={2}>000</MenuItem>
         <SubMenu title="test">
-          <MenuItem >hudada</MenuItem>
-          <MenuItem >lvlingling</MenuItem>
+          <MenuItem index={'3-0'}>hudada</MenuItem>
+          <MenuItem index={'3-1'}>lvlingling</MenuItem>
         </SubMenu>
       </Menu>
       <hr/>
