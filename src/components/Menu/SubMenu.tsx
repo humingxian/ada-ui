@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import { IMenuItemProps } from './MenuItem'
 import { MenuContext, TIndex } from './Menu'
 import Icon from '../Icon/Icon'
-import { CSSTransition } from 'react-transition-group'
 import Transition from '../Transition/Transition'
 export interface ISubMenuProps {
   index?: number | string;
