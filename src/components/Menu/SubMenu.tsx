@@ -2,6 +2,9 @@ import React, { useState, useContext } from 'react'
 import classNames from 'classnames'
 import { IMenuItemProps } from './MenuItem'
 import { MenuContext, TIndex } from './Menu'
+import Icon from '../Icon/Icon'
+import { CSSTransition } from 'react-transition-group'
+import Transition from '../Transition/Transition'
 export interface ISubMenuProps {
   index?: number | string;
   title: string;
@@ -17,7 +20,9 @@ const SubMenu: React.FC<ISubMenuProps> = (props: ISubMenuProps) => {
   const isOpen = index && mode ? defaultOpenSubMenus.includes(index) : false
   const [menuOpen, setMenuOpen] = useState(isOpen)
   const classes = classNames('ada-menu-item ada-submenu-item', className, {
-    'ada-submenu-item-active': context.index === index
+    'ada-submenu-item-active': context.index === index,
+    'ada-submenu-item-opened': menuOpen,
+    'ada-submenu-item-vertical': context.mode === 'vertical'
   })
 
   const handleClick = (e: React.MouseEvent) => {
@@ -41,7 +46,7 @@ const SubMenu: React.FC<ISubMenuProps> = (props: ISubMenuProps) => {
   } : {}
   const renderChildren = () => {
     const subMenuClasses = classNames('ada-submenu', {
-      'ada-submenu-open': menuOpen
+      'ada-submenu-opened': menuOpen
     })
     const childrenComponent = React.Children.map(children, (child, i) => {
       const childElement = child as React.FunctionComponentElement<IMenuItemProps>
@@ -55,14 +60,23 @@ const SubMenu: React.FC<ISubMenuProps> = (props: ISubMenuProps) => {
       }
     })
     return (
-      <ul className={subMenuClasses}>
-        {childrenComponent}
-      </ul>
+      <Transition
+        in={menuOpen}
+        timeout={200}
+        animation='zoom-in-top'
+      >
+        <ul className={subMenuClasses}>
+          {childrenComponent}
+        </ul>
+      </Transition>
     )
   }
   return (
     <li key={index} className={classes} {...hoverEvents}>
-      <div className='ada-submenu-title' {...clickEvents}>{title}</div>
+      <div className='ada-submenu-title' {...clickEvents}>
+        {title}
+        <Icon icon='angle-down' className='arrow-icon' />
+      </div>
       {renderChildren()}
     </li>
   )

@@ -4,11 +4,11 @@ import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontaw
 
 export type ThemeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark'
 
-export interface IconProps extends FontAwesomeIconProps {
+export interface IIconProps extends FontAwesomeIconProps {
   theme?: ThemeProps
 }
 
-const Icon: React.FC<IconProps> = (props: IconProps) => {
+const Icon: React.FC<IIconProps> = (props: IIconProps) => {
   const { className, theme, ...restProps } = props
   const classes = classNames('ada-icon', className, {
     [`ada-icon-${theme}`]: theme

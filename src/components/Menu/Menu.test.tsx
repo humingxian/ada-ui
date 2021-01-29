@@ -42,12 +42,11 @@ const createStyleFile = () => {
     .ada-submenu {
       display: none;
     }
-    .ada-submenu.ada-submenu-open {
+    .ada-submenu.ada-submenu-opened {
       display: block;
     }
   `
   const style = document.createElement('style')
-  style.type = 'text/css'
   style.innerHTML = cssFile
   return style
 }
@@ -88,7 +87,8 @@ describe('测试菜单和子菜单组件:', () => {
     expect(menuElement).toHaveClass('ada-menu-vertical')
   })
   it('当鼠标划过子菜单时，下拉菜单显示', async () => {
-    expect(wrapper.queryByText('submenu-1')).not.toBeVisible()
+    // 通过添加的 csstransition 组件的 unmountOnExit 会让元素默认不渲染
+    // expect(wrapper.queryByText('submenu-1')).not.toBeVisible()
     const dropdownElement = wrapper.getByText('submenu')
     fireEvent.mouseEnter(dropdownElement)
     await waitFor(() => {

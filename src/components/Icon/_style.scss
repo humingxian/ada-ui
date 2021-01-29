@@ -1,3 +1,8 @@
+// @each 是 sass 中循环 list 和 map 的方法
+// sass 中的 list 格式是 $names: hudada, lvlingling, huyihui;
+// sass 中的 maps 格式是 $names: ('k1': 'hudada', 'k2': 'lvlingling', 'k3': 'huyihui');
+
+// 下面就是循环 maps 的用法.
 @each $key, $val in $theme-colors {
   .ada-icon-#{$key} {
     color: $val;
