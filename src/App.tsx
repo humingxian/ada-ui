@@ -1,9 +1,9 @@
 import React, { /* useState */ } from 'react'
 // import Button from './components/Button/Button'
 // import Alert from './components/Alert/Alert'
-import Menu from './components/Menu2.0/Menu'
-import MenuItem from './components/Menu2.0/MenuItem'
-import SubMenu from './components/Menu2.0/SubMenu'
+import Menu from './components/Menu/Menu'
+import MenuItem from './components/Menu/MenuItem'
+import SubMenu from './components/Menu/SubMenu'
 import Icon from './components/Icon/Icon'
 // import Transition from './components/Transition/Transition'
 
