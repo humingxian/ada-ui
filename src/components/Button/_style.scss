@@ -33,6 +33,10 @@
   @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $border-radius-lg)
 }
 
+.btn-md {
+  @include button-size($btn-padding-y-md, $btn-padding-x-md, $btn-font-size-md, $btn-border-radius-md)
+}
+
 .btn-sm {
   @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $border-radius-sm)
 }
@@ -41,9 +45,26 @@
   @include button-style($primary, $primary, $white)
 }
 
+.btn-warning {
+  @include button-style($warning, $warning, $white)
+}
+
 .btn-danger {
   @include button-style($danger, $danger, $white)
 }
+
+.btn-success {
+  @include button-style($success, $success, $white)
+}
+
+.btn-light {
+  @include button-style($light, $light, $dark)
+}
+
+.btn-dark {
+  @include button-style($dark, $dark, $light)
+}
+
 
 .btn-default {
   @include button-style($white, $gray-400, $body-color, $white, $primary, $primary)
