@@ -1,6 +1,5 @@
 import React from 'react'
-import { render, RenderResult, cleanup, fireEvent, wait } from '@testing-library/react'
-// import fireEvent from '@testing-library/user-event'
+import { render, RenderResult, cleanup, fireEvent, waitFor } from '@testing-library/react'
 
 import Menu, { IMenuProps } from './Menu'
 import MenuItem from './MenuItem'
@@ -92,13 +91,13 @@ describe('测试菜单和子菜单组件:', () => {
     expect(wrapper.queryByText('submenu-1')).not.toBeVisible()
     const dropdownElement = wrapper.getByText('submenu')
     fireEvent.mouseEnter(dropdownElement)
-    await wait(() => {
+    await waitFor(() => {
       expect(wrapper.queryByText('submenu-1')).toBeVisible()
     })
     fireEvent.click(wrapper.getByText('submenu-1'))
     expect(testProps.onSelect).toHaveBeenCalledWith('3-0')
     fireEvent.mouseLeave(dropdownElement)
-    await wait(() => {
+    await waitFor(() => {
       expect(wrapper.queryByText('submenu-1')).not.toBeVisible()
     })
   })
