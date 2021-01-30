@@ -7,12 +7,19 @@ export type TMenuMode = 'horizontal' | 'vertical';
 export type TSelectCallback = (selectedIndex: TIndex) => void;
 
 export interface IMenuProps {
+  /** 默认 被选中的子菜单 */
   defaultIndex?: TIndex;
+  /** class 类名 */
   className?: string;
+  /** 菜单模式 横向 或者 竖向 */
   mode?: TMenuMode;
+  /** 菜单的内联样式 */
   style?: React.CSSProperties;
+  /** 被选中后的回调函数 */
   onSelect?: TSelectCallback;
+  /** 子节点 */
   children?: React.ReactNode;
+  /** 默认展开的二级菜单（只有在 mode=vertical 时生效） */
   defaultOpenSubMenus?: TIndex[]
 }
 export interface IMenuContext {
@@ -24,7 +31,7 @@ export interface IMenuContext {
 
 export const MenuContext = createContext<IMenuContext>({ index: 0 })
 
-const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
+export const Menu: React.FC<IMenuProps> = (props: IMenuProps) => {
   const { className, mode, style, children, defaultIndex, onSelect, defaultOpenSubMenus } = props
   const [currentActive, setCurrentActive] = useState(defaultIndex)
   const classes = classNames('ada-menu', className, {

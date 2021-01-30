@@ -9,7 +9,7 @@ export interface IMenuItemProps {
   children?: React.ReactNode;
 }
 
-const MenuItem: React.FC<IMenuItemProps> = (props: IMenuItemProps) => {
+export const MenuItem: React.FC<IMenuItemProps> = (props: IMenuItemProps) => {
   const { index, disabled, className, style, children } = props
   const context = useContext(MenuContext)
   const classes = classNames('ada-menu-item', className, {
