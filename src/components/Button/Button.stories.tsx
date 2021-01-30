@@ -5,16 +5,10 @@ import { action } from '@storybook/addon-actions'
 
 import { Button, ButtonProps } from './Button'
 
-const styles: React.CSSProperties = {
-  textAlign: 'center'
-}
-
-// 装饰 story 的 组件
-const CenterDecorator = (storyFn: any) => (<div style={styles}>{storyFn()}</div>)
 export default {
   title: 'Components/Button',
   component: Button,
-  decorators: [CenterDecorator]
+  decorators: []
 } as Meta
 
 const DefaultTemplate: Story<ButtonProps> = (args) => <Button {...args} onClick={action('clicked')} />
