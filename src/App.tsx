@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Button from './components/Button/Button'
-// import Alert from './components/Alert/Alert'
+import Alert from './components/Alert/Alert'
 import Menu from './components/Menu/Menu'
 import MenuItem from './components/Menu/MenuItem'
 import SubMenu from './components/Menu/SubMenu'
@@ -21,6 +21,8 @@ function App () {
     <main style={{ padding: '50px' }}>
       <FontAwesomeIcon icon='coffee' size='2x' />
       <Icon icon='arrow-down' size='2x' theme='primary' />
+      <hr/>
+      <Alert message='test' />
       <hr/>
       <Menu onSelect={i => alert(`${i}-hudada`)}>
         <MenuItem>888</MenuItem>

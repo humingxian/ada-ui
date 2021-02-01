@@ -8,7 +8,7 @@ export interface IIconProps extends FontAwesomeIconProps {
   theme?: ThemeProps
 }
 
-const Icon: React.FC<IIconProps> = (props: IIconProps) => {
+export const Icon: React.FC<IIconProps> = (props: IIconProps) => {
   const { className, theme, ...restProps } = props
   const classes = classNames('ada-icon', className, {
     [`ada-icon-${theme}`]: theme

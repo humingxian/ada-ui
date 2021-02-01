@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 export type alertType = 'success' | 'default' | 'warning' | 'danger'
 
-interface AlertProps {
+export interface IAlertProps {
   // 标题
   title?: string,
   // 类型
@@ -19,7 +19,7 @@ interface AlertProps {
   // 关闭方法
   onClose?: () => void
 }
-export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
+export const Alert: React.FC<IAlertProps> = (props: IAlertProps) => {
   const [closed, setClosed] = useState<boolean>(false)
   const {
     title,
@@ -46,7 +46,7 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
     <React.Fragment>
       {
         !closed &&
-        <div className={classes}>
+        <div className={classes} data-testid='test-alert'>
           {
             title &&
             <span className='alert-title'>
