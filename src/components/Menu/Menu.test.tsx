@@ -1,16 +1,9 @@
 import React from 'react'
 import { render, RenderResult, cleanup, fireEvent, waitFor } from '@testing-library/react'
-// 这个方法支持在 FontAwesomeIcon 组件上写 string 格式的 icon 名字
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
 
 import Menu, { IMenuProps } from './Menu'
 import MenuItem from './MenuItem'
 import SubMenu from './SubMenu'
-
-// fas 是所有 free-solid-svg-icons 类型图标的集合
-// 通过 library.add 方法将集合都加入进来
-library.add(fas)
 
 const testProps: IMenuProps = {
   defaultIndex: 0,

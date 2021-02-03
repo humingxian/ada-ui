@@ -6,7 +6,7 @@ import { MenuItem } from './MenuItem'
 import { SubMenu } from './SubMenu'
 
 export default {
-  title: 'Components/Menu',
+  title: '组件/Menu',
   component: Menu,
   decorators: []
 } as Meta

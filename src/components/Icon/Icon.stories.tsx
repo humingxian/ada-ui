@@ -5,7 +5,7 @@ import { Story, Meta } from '@storybook/react/types-6-0'
 import { Icon, IIconProps } from './Icon'
 
 export default {
-  title: 'Components/Icon',
+  title: '组件/Icon',
   component: Icon
 } as Meta
 

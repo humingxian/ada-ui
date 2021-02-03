@@ -22,7 +22,7 @@ function App () {
       <FontAwesomeIcon icon='coffee' size='2x' />
       <Icon icon='arrow-down' size='2x' theme='primary' />
       <hr/>
-      <Alert message='test' />
+      <Alert message='我是test-message' />
       <hr/>
       <Menu onSelect={i => alert(`${i}-hudada`)}>
         <MenuItem>888</MenuItem>

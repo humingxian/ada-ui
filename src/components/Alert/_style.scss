@@ -1,44 +1,46 @@
-.alert {
+.ada-alert {
   position: relative;
   padding: $alert-padding-y $alert-padding-x;
-  margin-bottom: $alert-margin-bottom;
   border: $border-width solid transparent;
   border-radius: $border-radius;
 }
 
-.alert-success {
+.ada-alert-success {
   @include alert-style($white, $success, $success)
 }
 
-.alert-default {
+.ada-alert-default {
   @include alert-style($white, $primary, $primary)
 }
 
-.alert-danger {
+.ada-alert-danger {
   @include alert-style($white, $danger, $danger)
 }
 
-.alert-warning {
+.ada-alert-warning {
   @include alert-style($white, $warning, $warning)
 }
 
-.alert-message {
+.ada-alert-message {
   display: none;
   font-size: $font-size-sm;
   line-height: $line-height-base;
 }
 
-.alert-width-message {
-  .alert-message {
+.ada-alert-width-message {
+  .ada-alert-message {
     display: block;
   }
 }
 
-.alert-close {
+.ada-alert-close {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: $alert-padding-y $alert-padding-x;
-  color: inherit;
+  top: $alert-close-top;
+  right: $alert-close-right;
+  color: $white;
   cursor: pointer;
+}
+
+.ada-alert-icon {
+  margin-right: $alert-icon-mr;
 }

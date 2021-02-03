@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions'
 import { Button, ButtonProps } from './Button'
 
 export default {
-  title: 'Components/Button',
+  title: '组件/Button',
   component: Button,
   decorators: []
 } as Meta
