@@ -64,7 +64,12 @@ export const Alert: React.FC<IAlertProps> = (props: IAlertProps) => {
             <span className='ada-alert-message'>{message}</span>
             {
               closeable && (
-                <Icon icon='times-circle' className='ada-alert-close' onClick={handleClose} />
+                <Icon
+                  icon='times-circle'
+                  onClick={handleClose}
+                  className='ada-alert-close'
+                  data-testid='test-alert-close'
+                />
               )
             }
           </div>

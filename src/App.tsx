@@ -5,6 +5,7 @@ import Menu from './components/Menu/Menu'
 import MenuItem from './components/Menu/MenuItem'
 import SubMenu from './components/Menu/SubMenu'
 import Icon from './components/Icon/Icon'
+import Input from './components/Input/Input'
 import Transition from './components/Transition/Transition'
 
 // 这个方法支持在 FontAwesomeIcon 组件上写 string 格式的 icon 名字
@@ -21,6 +22,8 @@ function App () {
     <main style={{ padding: '50px' }}>
       <FontAwesomeIcon icon='coffee' size='2x' />
       <Icon icon='arrow-down' size='2x' theme='primary' />
+      <hr/>
+      <Input onInput={e => console.log(e)} />
       <hr/>
       <Alert message='我是test-message' />
       <hr/>

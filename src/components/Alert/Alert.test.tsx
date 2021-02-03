@@ -22,7 +22,7 @@ describe('test Alert component', () => {
   it('应该渲染一个默认配置的 Alert 组件', async () => {
     const wrapper = render(<Alert {...testDefault} />)
     const element = wrapper.getByTestId('test-alert')
-    const closeEl = wrapper.getByText('关闭')
+    const closeEl = wrapper.getByTestId('test-alert-close')
     expect(element).toBeTruthy()
     expect(element).toBeInTheDocument()
     expect(element).toHaveClass('ada-alert ada-alert-default ada-alert-width-message')
@@ -32,7 +32,7 @@ describe('test Alert component', () => {
       // 元素在初始化是存在的
       // 注意使用 queryBy 而不是 getBy， 返回 null 而不是抛出查询本身
       // 当元素在页面不渲染时，就用这种方式 写测试用例
-      expect(wrapper.queryByText('关闭')).not.toBeInTheDocument()
+      expect(wrapper.queryByTestId('test-alert')).not.toBeInTheDocument()
     })
   })
   it('应该渲染一个带有icon和 wraning 的 不可关闭的 Alert 组件', async () => {
@@ -42,7 +42,7 @@ describe('test Alert component', () => {
     expect(element).toBeTruthy()
     expect(element).toBeInTheDocument()
     expect(element).toHaveClass('ada-alert ada-alert-warning ada-alert-width-message')
-    expect(wrapper.queryByText('关闭')).not.toBeInTheDocument()
+    expect(wrapper.queryByTestId('test-alert-close')).not.toBeInTheDocument()
     expect(titleEl).toBeTruthy()
     expect(titleEl).toBeInTheDocument()
     expect(titleEl).toHaveClass('ada-alert-title')
