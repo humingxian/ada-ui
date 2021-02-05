@@ -11,22 +11,46 @@
   color: $input-color;
   box-shadow: $input-box-shadow;
   transition: $input-transition;
+
   .ada-input-content {
+    position: relative;
     flex-grow: 1;
-    .ada-input-el {
-      padding: 0;
+    .ada-input-ipt {
+      padding: $input-ipt-padding;
       outline: none;
       border: none;
-      width: calc(100% - #{$input-clear-width});
+      width: $input-ipt-width;
+    }
+    .ada-input-icon, .ada-input-clear {
+      position: absolute;
+      top: $input-icon-top;
+      right: $input-icon-right;
+      margin-top: -$input-icon-height/2;
+      color: $input-icon-color;
+      width: $input-icon-width;
+      height: $input-icon-height;
+      background: $input-bg;
+      pointer-events: none;
     }
     .ada-input-clear {
       cursor: pointer;
-      color: $input-clear-color;
-      width: $input-clear-width;
-      height: $input-clear-height;
+      pointer-events: auto;
       &:active {
-        color: $input-clear-active-color;
+        color: $input-icon-active-color;
       }
     }
+  }
+}
+.ada-input.ada-input-focused {
+  border-color: $input-focus-border-color;
+  box-shadow: $input-focus-box-shadow;
+  background: $input-focus-bg;
+  color: $input-focus-color;
+}
+.ada-input.ada-input-disabled {
+  background: $input-disabled-bg;
+  border-color: $input-disabled-border-color;
+  .ada-input-icon, .ada-input-clear {
+    background: $input-disabled-bg;
   }
 }

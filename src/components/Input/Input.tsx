@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, InputHTMLAttributes } from 'react'
+import React, { FC, InputHTMLAttributes, ChangeEvent, FocusEvent, MouseEvent, ReactNode, useState, useRef } from 'react'
 import classNames from 'classnames'
 import Icon from '../Icon/Icon'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
@@ -25,31 +25,89 @@ export interface IInputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'siz
   append?: string | ReactNode;
   /** 后缀类名 */
   appendClass?: string;
+  /** input 内容变化时的回调函数 */
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Input: FC<IInputProps> = (props: IInputProps) => {
   // 取出 props
-  const { disabled, size, icon, prepand, prepandClass, append, appendClass, clearable, ...restProps } = props
+  const { disabled, size, icon, prepand, prepandClass, append, appendClass, clearable, onChange, style, ...restProps } = props
+  const iptRef = useRef<HTMLInputElement>(null)
+
+  // 控制显示清除按钮
+  const [showClear, setShowClear] = useState(false)
+  const [focused, setFocused] = useState(false)
 
   const classes = classNames('ada-input', {
     'ada-input-disabled': disabled,
-    [`ada-input-${size}`]: size
+    [`ada-input-${size}`]: size,
+    'ada-input-focused': focused
   })
   const beforeClasses = classNames('ada-input-prepand', prepandClass)
   const afterClasses = classNames('ada-input-append', appendClass)
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.persist()
+    if (clearable) {
+      if (e.target.value === '') {
+        setShowClear(false)
+      } else {
+        setShowClear(true)
+      }
+    }
+    if (onChange) {
+      onChange(e)
+    }
+  }
+  const handleMouseEvent = {
+    onMouseEnter: (/* e */) => {
+      const iptElement = iptRef.current as HTMLInputElement
+      if (iptElement.value !== '') {
+        setShowClear(true)
+      }
+    },
+    onMouseLeave: (/* e */) => {
+      setShowClear(false)
+    }
+  }
+
+  const handleFocusEvent = {
+    onFocus (/* e */) {
+      setFocused(true)
+    },
+    onBlur (e: FocusEvent) {
+      setFocused(false)
+    }
+  }
+  const handleClear = (e: MouseEvent<SVGSVGElement>) => {
+    e.persist()
+    const iptElement = iptRef.current as HTMLInputElement
+    iptElement.value = ''
+    setShowClear(false)
+    iptElement.focus()
+    e.preventDefault()
+  }
   return (
-    <section className={classes}>
+    <section className={classes} style={style} {...handleMouseEvent}>
       {
         prepand &&
         <section className={beforeClasses}>{prepand}</section>
       }
       <section className='ada-input-content'>
-        <input className='ada-input-el' {...restProps} />
+        <input
+          {...restProps}
+          {...handleFocusEvent}
+          disabled={disabled}
+          ref={iptRef}
+          onChange={handleChange}
+          className='ada-input-ipt'
+        />
         {
-          icon && <Icon icon={icon} className='ada-input-icon' />
+          icon && !(clearable && showClear) &&
+          <Icon icon={icon} className='ada-input-icon' />
         }
         {
-          clearable && <Icon icon='times-circle' className='ada-input-clear' />
+          (clearable && showClear) &&
+          <Icon icon='times-circle' className='ada-input-icon ada-input-clear' onClick={handleClear} />
         }
       </section>
       {

@@ -10,7 +10,6 @@ import Transition from './components/Transition/Transition'
 
 // 这个方法支持在 FontAwesomeIcon 组件上写 string 格式的 icon 名字
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 // fas 是所有 free-solid-svg-icons 类型图标的集合
 // 通过 library.add 方法将集合都加入进来
@@ -20,10 +19,9 @@ function App () {
   const [show, setShow] = useState(false)
   return (
     <main style={{ padding: '50px' }}>
-      <FontAwesomeIcon icon='coffee' size='2x' />
       <Icon icon='arrow-down' size='2x' theme='primary' />
       <hr/>
-      <Input onInput={e => console.log(e)} />
+      <Input onChange={e => console.log(e)} />
       <hr/>
       <Alert message='我是test-message' />
       <hr/>
